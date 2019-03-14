@@ -36,14 +36,16 @@ class Calculator {
      */
 
     public function add($argv) {
-        $add = 0;
-        $sumValArr = array();
-        if (!empty($argv[2])) {
-            $replaceStr = str_replace('n',',', $argv[2]);
-            /* Convert string to array for sum */
-            $sumValArr = explode(',', $replaceStr);
-            if (!empty($sumValArr)) {
-                $add = array_sum($sumValArr);
+        $add = $len = 0;
+        $cStr = '';
+        $matches = $sumValArr = array();
+        $tag = strrpos($argv[2], '\\');
+        $del = substr($argv[2], 1, $tag - 1);
+        $str = substr($argv[2], $tag + 1);
+        $matches = explode($del, $str);
+        if (!empty($matches)) {
+            if (!empty($matches)) {
+                $add = array_sum($matches);
             }
         }
         echo $add;
