@@ -39,8 +39,9 @@ class Calculator {
         $add = 0;
         $sumValArr = array();
         if (!empty($argv[2])) {
+            $replaceStr = str_replace('n',',', $argv[2]);
             /* Convert string to array for sum */
-            $sumValArr = explode(',', $argv[2]);
+            $sumValArr = explode(',', $replaceStr);
             if (!empty($sumValArr)) {
                 $add = array_sum($sumValArr);
             }
