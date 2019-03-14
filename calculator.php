@@ -37,15 +37,23 @@ class Calculator {
      */
 
     public function add($argv) {
-        $add = $len = 0;
-        $matches = array();
+        $add = 0;
+        $cStr = '';
+        $matches = $negArr = array();
         $tag = strrpos($argv[2], '\\');
         $del = substr($argv[2], 1, $tag - 1);
         $str = substr($argv[2], $tag + 1);
         $matches = explode($del, $str);
         if (!empty($matches)) {
-            if(min($matches) >= 0){
-                echo "Negative numbers not allowed";
+            if (min($matches) >= 0) {
+                foreach ($matches as $val) {
+                    ($val < 0) ? $negArr[] = $val : '';
+                  
+                }
+                  if (!empty($negArr)) {
+                        $cStr = "(".implode($negArr).")";
+                    }
+                echo "Negative numbers not allowed".$cStr;
                 return FALSE;
             }
             if (!empty($matches)) {
