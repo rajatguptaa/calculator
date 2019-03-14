@@ -5,8 +5,8 @@
  * Author: Rajat Gupta
  */
 $call = new Calculator;
-if (!empty($argv[1]) && $argv[1] == 'sum') {
-    $call->sum($argv);
+if (!empty($argv[1]) && $argv[1] == 'add') {
+    $call->add($argv);
 }
 
 class Calculator {
@@ -29,7 +29,25 @@ class Calculator {
         echo $sum;
         return $sum;
     }
+ /*
+     * Purpose: add - return the sum of multiple numbers
+     * Params: input string
+     * Author: Rajat Gupta
+     */
 
+    public function add($argv) {
+        $add = 0;
+        $sumValArr = array();
+        if (!empty($argv[2])) {
+            /* Convert string to array for sum */
+            $sumValArr = explode(',', $argv[2]);
+            if (!empty($sumValArr)) {
+                $add = array_sum($sumValArr);
+            }
+        }
+        echo $add;
+        return $add;
+    }
 }
 
 ?>
