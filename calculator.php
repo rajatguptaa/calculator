@@ -29,7 +29,8 @@ class Calculator {
         echo $sum;
         return $sum;
     }
- /*
+
+    /*
      * Purpose: add - return the sum of multiple numbers
      * Params: input string
      * Author: Rajat Gupta
@@ -37,13 +38,16 @@ class Calculator {
 
     public function add($argv) {
         $add = $len = 0;
-        $cStr = '';
-        $matches = $sumValArr = array();
+        $matches = array();
         $tag = strrpos($argv[2], '\\');
         $del = substr($argv[2], 1, $tag - 1);
         $str = substr($argv[2], $tag + 1);
         $matches = explode($del, $str);
         if (!empty($matches)) {
+            if(min($matches) >= 0){
+                echo "Negative numbers not allowed";
+                return FALSE;
+            }
             if (!empty($matches)) {
                 $add = array_sum($matches);
             }
@@ -51,6 +55,7 @@ class Calculator {
         echo $add;
         return $add;
     }
+
 }
 
 ?>

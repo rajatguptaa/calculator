@@ -1,4 +1,4 @@
 # Rajat-Gupta-Machine
 Machine Test
 Example input:
-php	calculator.php	add "\\;\\3;4;5"
+php	calculator.php	add "\\,\\2,7,-3,5,-2,"
