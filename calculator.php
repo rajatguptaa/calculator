@@ -37,31 +37,23 @@ class Calculator {
      */
 
     public function add($argv) {
-        $add = 0;
-        $cStr = '';
-        $matches = $negArr = array();
-        $tag = strrpos($argv[2], '\\');
-        $del = substr($argv[2], 1, $tag - 1);
-        $str = substr($argv[2], $tag + 1);
-        $matches = explode($del, $str);
-        if (!empty($matches)) {
-            if (min($matches) >= 0) {
-                foreach ($matches as $val) {
-                    ($val < 0) ? $negArr[] = $val : '';
-                  
-                }
-                  if (!empty($negArr)) {
-                        $cStr = "(".implode($negArr).")";
+        $sum = 0;
+        $valMin = 1000;
+        $sumValArr = array();
+        if (!empty($argv[2])) {
+            /* Convert string to array for sum */
+            $sumValArr = explode(',', $argv[2]);
+            if (!empty($sumValArr)) {
+                foreach ($sumValArr as $key => $value) {
+                    if ($value >= $valMin) {
+                        unset($sumValArr[$key]);
                     }
-                echo "Negative numbers not allowed".$cStr;
-                return FALSE;
-            }
-            if (!empty($matches)) {
-                $add = array_sum($matches);
+                }
+                $sum = array_sum(array_values($sumValArr));
             }
         }
-        echo $add;
-        return $add;
+        echo $sum;
+        return $sum;
     }
 
 }
